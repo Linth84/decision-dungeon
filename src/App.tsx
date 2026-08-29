@@ -1394,6 +1394,20 @@ function App() {
     useState('')
 
 
+  /*
+    Referencia a la tarjeta de resultado.
+
+    Cuando termina una tirada y aparece el resultado,
+    la interfaz hace scroll suave automáticamente
+    para que el usuario no tenga que buscarlo.
+  */
+
+  const resultRef =
+    useRef<HTMLDivElement | null>(
+      null,
+    )
+
+
   const [
     isRolling,
     setIsRolling,
@@ -1596,6 +1610,57 @@ function App() {
 
 
   }
+
+
+
+  /* ==================================================
+     4.1 SCROLL AUTOMÁTICO AL RESULTADO
+
+     Cuando una tirada termina:
+     - React renderiza la tarjeta de resultado.
+     - esperamos un frame para asegurarnos de que exista;
+     - hacemos scroll suave hasta ella.
+
+     Funciona tanto para una tirada normal como para
+     el resultado final de BEST OF 3.
+  ================================================== */
+
+  useEffect(
+    () => {
+
+      if (
+        !result ||
+        isRolling
+      ) {
+        return
+      }
+
+
+      const frameId =
+        window.requestAnimationFrame(
+          () => {
+
+            resultRef.current
+              ?.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center',
+              })
+
+          },
+        )
+
+
+      return () =>
+        window.cancelAnimationFrame(
+          frameId,
+        )
+
+    },
+    [
+      result,
+      isRolling,
+    ],
+  )
 
 
 
@@ -3184,6 +3249,7 @@ function App() {
             (
 
               <div
+                ref={resultRef}
                 className={
                   `result-card ${
                     isBestOfThreeResult
