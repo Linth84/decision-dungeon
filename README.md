@@ -131,7 +131,7 @@ decision-dungeon/
 Clone the repository:
 
 ``` bash
-git clone <https://github.com/Linth84/decision-dungeon>
+git clone https://github.com/Linth84/decision-dungeon
 cd decision-dungeon
 ```
 
