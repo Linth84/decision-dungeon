@@ -2192,7 +2192,7 @@ function App() {
 
       <audio
         ref={musicRef}
-        src="/audio/dungeon-ambience.mp3"
+        src={`${import.meta.env.BASE_URL}audio/dungeon-ambience.mp3`}
         loop
         preload="auto"
       />
@@ -2200,7 +2200,7 @@ function App() {
 
       <audio
         ref={diceSoundRef}
-        src="/audio/dice-roll.mp3"
+        src={`${import.meta.env.BASE_URL}audio/dice-roll.mp3`}
         preload="auto"
       />
 
@@ -2264,7 +2264,7 @@ function App() {
             world-astrolabe
             world-astrolabe--left
           "
-          src="/images/astrolabe-left.png"
+          src={`${import.meta.env.BASE_URL}images/astrolabe-left.png`}
           alt=""
           draggable="false"
         />
@@ -2283,7 +2283,7 @@ function App() {
             world-astrolabe
             world-astrolabe--right
           "
-          src="/images/astrolabe-right.png"
+          src={`${import.meta.env.BASE_URL}images/astrolabe-right.png`}
           alt=""
           draggable="false"
         />
@@ -3068,7 +3068,7 @@ function App() {
 
             <SeamlessVideo
               className="dice-vortex"
-              src="/effects/dice-vortex.webm"
+              src={`${import.meta.env.BASE_URL}effects/dice-vortex.webm`}
               crossfade={0.7}
             />
 

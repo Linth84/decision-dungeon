@@ -55,6 +55,14 @@ type D20Props = {
 }
 
 
+/*
+  Ruta compatible con subdirectorios de producción
+  (por ejemplo GitHub Pages /decision-dungeon/).
+*/
+const D20_MODEL_URL =
+  `${import.meta.env.BASE_URL}models/d20.glb`
+
+
 /* ==================================================
    2. MAPA NÚMERO → CARA REAL
 
@@ -465,7 +473,7 @@ function DiceModel({
 
   const { scene } =
     useGLTF(
-      '/models/d20.glb',
+      D20_MODEL_URL,
     )
 
 
@@ -1125,7 +1133,7 @@ function D20({
 ================================================== */
 
 useGLTF.preload(
-  '/models/d20.glb',
+  D20_MODEL_URL,
 )
 
 
